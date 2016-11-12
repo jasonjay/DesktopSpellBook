@@ -19,9 +19,9 @@ function updateText(spellToPrep)
 	var stringIt = "#"+spellToPrep;
 	var specificSpell = $(stringIt);
 
-	var addToList = $("#one");
+	var addToList = $("#spellLevelOne");
 	if(spellToPrep == "Sleep")
-		addToList = $("#two");
+		addToList = $("#spellLevelTwo");
 	var theButton = $("<button></button>").text(spellToPrep)
 	                .click(function(){$(this).css('background-color','red');
 									  $(this).click(function(){$(this).attr("background-color","");});

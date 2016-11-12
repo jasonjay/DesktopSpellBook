@@ -2,50 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-<style>
 
-body{
-	background-image: url("Tome.jpg");
-	background-repeat: no-repeat;
-	color: blue;
-	
-}
-#pane1{
-	width:470px;
-	height: 520px;
-	
-	
-}
-#pane2{
-	width: 330px;	
-    overflow:hidden;	
-	display: inline-block;
-	height: 520px;
-	
-	
-	
-	
-}
-table{
-	width: 800;
-	position: fixed;
-	top: 80px;
-	left: 137px;
-}
-td{
-	padding-bottom: 50;
-	padding-top: 0;
-	padding-left: 0;
-
-}
-#noDont{
-	padding-bottom: 0;
-	padding-top: 0;
-	padding-left: 0;
-}
-
-
-</style>
 </head>
 <script
   src="https://code.jquery.com/jquery-3.1.1.js"
@@ -64,32 +21,74 @@ td{
 <script src = magicDOM.js></script>
 
 <body onload = spellList()>
+<div class="container-fluid">
+	<div class = "row">
+		<div class = "span12" id ="noDont">
+			Click to display:<button id = "leftPane" onclick = swapSpellsAndScrolls()>Scrolls</button>
+		</div>
+	</div>
+	<div class = "row">
+		<div class ="col-md-4" id = "pane1"></div>
+		<div class ="col-md-8" id = "pane2">
+			<div class="container-fluid">
+				<div class = "row">
+					<div class = "span8">
+						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevelOne">Level 1</button>
+						<div id = "spellLevelOne" class="collapse in"></div>
+					</div>
+				</div>
+				<div class = "row">
+					<div class = "span8">
+						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevelTwo">Level 2</button>
+						<div id = "spellLevelTwo" class="collapse in"></div>
+					</div>
+				</div>
+				<div class = "row">
+					<div class = "span8">
+						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevelThree">Level 3</button>
+						<div id = "spellLevelThree" class="collapse in"></div>
+					</div>
+				</div>
+				<div class = "row">
+					<div class = "span8">
+						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevelFour">Level 4</button>
+						<div id = "spellLevelFour" class="collapse in"></div>
+					</div>
+				</div>	
+								<div class = "row">
+					<div class = "span8">
+						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevelFive">Level 5</button>
+						<div id = "spellLevelFive" class="collapse in"></div>
+					</div>
+				</div>
+				<div class = "row">
+					<div class = "span8">
+						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevelSix">Level 6</button>
+						<div id = "spellLevelSix" class="collapse in"></div>
+					</div>
+				</div>
+				<div class = "row">
+					<div class = "span8">
+						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevelSeven">Level 7</button>
+						<div id = "spellLevelSeven" class="collapse in"></div>
+					</div>
+				</div>
+				<div class = "row">
+					<div class = "span8">
+						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevelEight">Level 8</button>
+						<div id = "spellLevelEight" class="collapse in"></div>
+					</div>
+				</div>
+				<div class = "row">
+					<div class = "span8">
+						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevelNine">Level 9</button>
+						<div id = "spellLevelNine" class="collapse in"></div>
+					</div>
+				</div>				
+			</div>
+		</div>
 
-<table border = 2px>
-<tbody >
-  <tr>
-     <td id="noDont">
-	    Click to display: <button id = "leftPane" onclick = swapSpellsAndScrolls()>Scrolls</button>
-     </td>
-  </tr>
-  <tr>
-     <td id = "pane1"></td>
-     <td id = "pane2">
-		
-							<div id = "one"  >
-								<b>Level 1</b>
-							</div>
-						   
-							<div id = "two"  >
-								</br>
-								<b>Level 2</b>
-							</div>
-		
-						</td>
-		
-  </tr>
- </tbody> 
-</table>
-
-	 </body>
+	</div>
+</div>
+</body>
 </html>
