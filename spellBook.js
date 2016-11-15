@@ -13,22 +13,37 @@ function swapSpellsAndScrolls()
 		spellList();
 	}
 }
-function updateText(spellToPrep)
+function updateText(event)
 {
-	var preparedSpells = $("pane2");
-	var stringIt = "#"+spellToPrep;
-	var specificSpell = $(stringIt);
+	var spellName = event.data.param1;
+	var spellLevel = event.data.param2;
+	var spellSchool = event.data.param3;
+	
+	var maxSpellLevel = 0; for(var a of mage.mind)maxSpellLevel++;
+	
+	for(var currentLevel = spellLevel; currentLevel < maxSpellLevel;currentLevel++)
+	{
+		var addSpellToLevel = $("#spellLevel"+currentLevel);
+	
+		var buttonArray = addSpellToLevel[0].children;
+	    
+		for(var slot of buttonArray)
+		{
+			if(slot.className == "btn btn-info" && slot.textContent == "Empty")
+			{	
+				slot.textContent = spellName;
+				return;
+			}
+			if(slot.className == "btn btn-warning" && slot.textContent == "Empty" && slot.id == spellSchool)
+			{
+				slot.textContent = spellName;
+				return;
+				
+			}
+		}
 
-	var addToList = $("#spellLevelOne");
-	if(spellToPrep == "Sleep")
-		addToList = $("#spellLevelTwo");
-	var theButton = $("<button></button>").text(spellToPrep)
-	                .click(function(){$(this).css('background-color','red');
-									  $(this).click(function(){$(this).attr("background-color","");});
-									  });
-	addToList.append(theButton);
-	//addToList.appendChild(spellToAdd);
-	//preparedSpells.innerHTML +="<br><button onclick = castSpell()>"+specificSpell[counter].childNodes[0].nodeValue+"</button>"
+	
+	}
 }
 
 function strike(specificScroll)
@@ -46,15 +61,29 @@ function strike(specificScroll)
 
 function spellList()
 {
-	var x = document.getElementById("pane1");
-	x.innerHTML = "";
-	var specificSpell;
-	for(var c = 0; c < spellDoc.getElementsByTagName("spell").length; c++)
-	{
-		specificSpell = spellDoc.getElementsByTagName("spell")[c];
-		x.innerHTML += "<span onclick = updateText("+"\'"+specificSpell.id+"\'"+")>" + specificSpell.childNodes[0].nodeValue +  "</span><br>";
+    //rewrite this function to return only the spells currently in the characters spell book.
+	//the primary keys of the spells known will be in an array.
 
-	}
+	for(var num of characterSpellList)
+	{
+		if(masterSpellList[num].fields.level.includes("wizard"))
+			var levelOfSpell = masterSpellList[num].fields.level.split("wizard ");
+		else
+			continue;
+		
+		var addedSpell = $("<button></button>")
+		.attr("class","btn btn-primary")
+		.attr("id",masterSpellList[num].fields.name)
+		.text(this.masterSpellList[num].fields.name);
+		//onclick parameters: Spell name, Level of Spell, School of spell
+		addedSpell.click({param1:masterSpellList[num].fields.name, param2:levelOfSpell[1], param3:masterSpellList[num].fields.school},updateText);
+	
+		
+		
+		var levelSection = "#bookLevel"+levelOfSpell[1];
+		$(levelSection).append(addedSpell);
+	}	
+	populateMind();
 }
 
 function scrollList()
@@ -73,4 +102,32 @@ function scrollList()
 function castSpell(spell)
 {
 	
+}
+
+function populateMind()
+{
+	var spellLevelCounter = 0;
+
+	for(var num of mage.mind)
+	{	
+		var levelToAddSlotsTo = "#spellLevel"+spellLevelCounter;
+		for(var a = 0; a < num; a++)
+		{
+			
+			var addedButton=$("<button></button>")
+				.attr("class","btn btn-info")
+				.text("Empty");
+			
+			$(levelToAddSlotsTo).append(addedButton);
+		}
+	    if(mage.specialization != null && spellLevelCounter != 0)
+		{
+			var addedButton=$("<button></button>")
+				.attr("class","btn btn-warning")
+				.attr("id",mage.specialization)
+				.text("Empty");
+			$(levelToAddSlotsTo).append(addedButton);
+		}
+		spellLevelCounter++;
+	}	
 }

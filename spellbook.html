@@ -17,9 +17,12 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script src = spellBook.js></script>
 <script src = magicDOM.js></script>
-
+<script src = spells.js></script>
+<script src = spellBook.js></script>
+<style>
+body{ background-color:grey;}
+</style>
 <body onload = spellList()>
 <div class="container-fluid">
 	<div class = "row">
@@ -28,61 +31,136 @@
 		</div>
 	</div>
 	<div class = "row">
-		<div class ="col-md-4" id = "pane1"></div>
-		<div class ="col-md-8" id = "pane2">
+		<div class ="col-md-4" id = "pane1">
+		
 			<div class="container-fluid">
 				<div class = "row">
 					<div class = "span8">
-						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevelOne">Level 1</button>
-						<div id = "spellLevelOne" class="collapse in"></div>
+						<button type="button" class = "btn btn-success" data-toggle="collapse" data-target="#bookLevel0">Level 0</button>
+						<div id = "bookLevel0" class="collapse in"></div>
 					</div>
 				</div>
 				<div class = "row">
 					<div class = "span8">
-						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevelTwo">Level 2</button>
-						<div id = "spellLevelTwo" class="collapse in"></div>
+						<button type="button" class = "btn btn-success" data-toggle="collapse" data-target="#bookLevel1">Level 1</button>
+						<div id = "bookLevel1" class="collapse in"></div>
 					</div>
 				</div>
 				<div class = "row">
 					<div class = "span8">
-						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevelThree">Level 3</button>
-						<div id = "spellLevelThree" class="collapse in"></div>
+						<button type="button" class = "btn btn-success" data-toggle="collapse" data-target="#bookLevel2">Level 2</button>
+						<div id = "bookLevel2" class="collapse in"></div>
 					</div>
 				</div>
 				<div class = "row">
 					<div class = "span8">
-						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevelFour">Level 4</button>
-						<div id = "spellLevelFour" class="collapse in"></div>
+						<button type="button" class = "btn btn-success" data-toggle="collapse" data-target="#bookLevel3">Level 3</button>
+						<div id = "bookLevel3" class="collapse in"></div>
+					</div>
+				</div>
+				<div class = "row">
+					<div class = "span8">
+						<button type="button" class = "btn btn-success" data-toggle="collapse" data-target="#bookLevel4">Level 4</button>
+						<div id = "bookLevel4" class="collapse in"></div>
 					</div>
 				</div>	
 								<div class = "row">
 					<div class = "span8">
-						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevelFive">Level 5</button>
-						<div id = "spellLevelFive" class="collapse in"></div>
+						<button type="button" class = "btn btn-success" data-toggle="collapse" data-target="#bookLevel5">Level 5</button>
+						<div id = "bookLevel5" class="collapse in"></div>
 					</div>
 				</div>
 				<div class = "row">
 					<div class = "span8">
-						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevelSix">Level 6</button>
-						<div id = "spellLevelSix" class="collapse in"></div>
+						<button type="button" class = "btn btn-success" data-toggle="collapse" data-target="#bookLevel6">Level 6</button>
+						<div id = "bookLevel6" class="collapse in"></div>
 					</div>
 				</div>
 				<div class = "row">
 					<div class = "span8">
-						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevelSeven">Level 7</button>
-						<div id = "spellLevelSeven" class="collapse in"></div>
+						<button type="button" class = "btn btn-success" data-toggle="collapse" data-target="#bookLevel7">Level 7</button>
+						<div id = "bookLevel7" class="collapse in"></div>
 					</div>
 				</div>
 				<div class = "row">
 					<div class = "span8">
-						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevelEight">Level 8</button>
-						<div id = "spellLevelEight" class="collapse in"></div>
+						<button type="button" class = "btn btn-success" data-toggle="collapse" data-target="#bookLevel8">Level 8</button>
+						<div id = "bookLevel8" class="collapse in"></div>
 					</div>
 				</div>
 				<div class = "row">
 					<div class = "span8">
-						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevelNine">Level 9</button>
-						<div id = "spellLevelNine" class="collapse in"></div>
+						<button type="button" class = "btn btn-success" data-toggle="collapse" data-target="#bookLevel9">Level 9</button>
+						<div id = "bookLevel9" class="collapse in"></div>
+					</div>
+				</div>				
+			</div>
+		</div>
+		<div class ="col-md-4" id = "midPane">
+			<div class="container-fluid">
+				<img class = "img-responsive" src = "wwXXQO7.png">
+			</div>
+		</div>
+		<div class ="col-md-4" id = "pane2">
+			<div class="container-fluid">
+				<div class = "row">
+					<div class = "span8">
+						<button type="button" class = "btn btn-success" data-toggle="collapse" data-target="#spellLevel0">Level 0</button>
+						<div id = "spellLevel0" class="collapse in"></div>
+					</div>
+				</div>
+				<div class = "row">
+					<div class = "span8">
+						<button type="button" class = "btn btn-success" data-toggle="collapse" data-target="#spellLevel1">Level 1</button>
+						<div id = "spellLevel1" class="collapse in"></div>
+					</div>
+				</div>
+				<div class = "row">
+					<div class = "span8">
+						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevel2">Level 2</button>
+						<div id = "spellLevel2" class="collapse in"></div>
+					</div>
+				</div>
+				<div class = "row">
+					<div class = "span8">
+						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevel3">Level 3</button>
+						<div id = "spellLevel3" class="collapse in"></div>
+					</div>
+				</div>
+				<div class = "row">
+					<div class = "span8">
+						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevel4">Level 4</button>
+						<div id = "spellLevel4" class="collapse in"></div>
+					</div>
+				</div>	
+								<div class = "row">
+					<div class = "span8">
+						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevel5">Level 5</button>
+						<div id = "spellLevel5" class="collapse in"></div>
+					</div>
+				</div>
+				<div class = "row">
+					<div class = "span8">
+						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevel6">Level 6</button>
+						<div id = "spellLevel6" class="collapse in"></div>
+					</div>
+				</div>
+				<div class = "row">
+					<div class = "span8">
+						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevel7">Level 7</button>
+						<div id = "spellLevel7" class="collapse in"></div>
+					</div>
+				</div>
+				<div class = "row">
+					<div class = "span8">
+						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevel8">Level 8</button>
+						<div id = "spellLevel8" class="collapse in"></div>
+					</div>
+				</div>
+				<div class = "row">
+					<div class = "span8">
+						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#spellLevel9">Level 9</button>
+						<div id = "spellLevel9" class="collapse in"></div>
 					</div>
 				</div>				
 			</div>
