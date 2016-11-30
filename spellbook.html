@@ -20,7 +20,7 @@
 <script src = spells.js></script>
 <script src = spellBook.js></script>
 <style>
-body{ background-color:black;}
+body{ background-color:grey;}
 
 @keyframes flickerAnimation {
   0%   { opacity:1; }
@@ -39,7 +39,7 @@ body{ background-color:black;}
 <body onload = pageLoaded()>
 <div class="container-fluid">
 	<div class = "row">
-		<div class = "span12" id ="noDont" style ="color:red">
+		<div class = "span12" id ="noDont" style ="color:black">
 			Click to display:<button id = "leftPane" onclick = swapSpellsAndScrolls()>Items</button>
 		</div>
 	</div>
@@ -48,13 +48,13 @@ body{ background-color:black;}
 			<div class="container-fluid">
 				<div class = "row">
 					<div class = "span5">
-						<button type="button" class = "btn-success btn-sm" data-toggle="collapse" data-target="#bookLevel0">Level 0</button>
+						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#bookLevel0">Level 0</button>
 						<div id = "bookLevel0" class="collapse in"></div>
 					</div>
 				</div>
 				<div class = "row">
 					<div class = "span5">
-						<button type="button" class = "btn-success btn" data-toggle="collapse" data-target="#bookLevel1">Level 1</button>
+						<button type="button" class = "btn-success" data-toggle="collapse" data-target="#bookLevel1">Level 1</button>
 						<div id = "bookLevel1" class="collapse in"></div>
 					</div>
 				</div>
@@ -111,7 +111,7 @@ body{ background-color:black;}
 		<div class ="col-md-3" id = "midPane">
 			<div class="container-fluid">
 				<div class = "row">
-					<img class = "img-responsive sigil" src = "wwXXQO7.png">
+					<img class = "img-responsive sigil" src = "batman.png">
 				</div>
 			</div>
 		</div>
