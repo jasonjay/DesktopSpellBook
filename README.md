@@ -9,6 +9,8 @@ After customizing this page for your wizard(see below), you'll see the spells yo
 
 Spells will be added to your prepared spell selection at the lowest level possible. If no slots exist on the lowest possible level the spell will be added to a higher level slot. 
 
+If you have a specialization you will have an orange spell slot on any spell level where you have at least one spell slot. This slot can only be filled by a spell that is within your school. If you select a spell that does not fit your specialization and this is the only slot open for that level, then a higher level slot will be used. The specialization slot is filled last when choosing spells. 
+
 To cast a spell click on the spell from the prepared spells section on the right side of the screen. The button will turn red, indicating the spell has been cast. 
 
 To refresh your spells for the next day, refresh the browser. 
@@ -32,4 +34,5 @@ has the primary key under the pk field. Add in the primary key to the characterS
 <li>Support for flexible slot feat</li>
 <li>Modal window for new character creation</li>
 <li>Items functionality needs to be added, wands, scroll, spontaneous casts for bonded mages</li>
+<li>Opposition spells taking up two slots instead of one</li>
 </ol>
