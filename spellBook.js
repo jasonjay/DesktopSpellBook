@@ -17,7 +17,7 @@ function swapSpellsAndScrolls()
 function updateText(event)
 {
 	var spellName = event.data.param1;
-	var spellLevel = event.data.param2[0];
+	var spellLevel = event.data.param2;
 	var spellSchool = event.data.param3;
 	
 	var maxSpellLevel = 0; for(var a of mage.mind)maxSpellLevel++;
@@ -30,12 +30,12 @@ function updateText(event)
 	    
 		for(var slot of buttonArray)
 		{
-			if(slot.className == "btn-info" && slot.textContent == "Empty")
+			if(slot.className.includes("btn-info") && slot.textContent == "Empty")
 			{	
 				slot.textContent = spellName;
 				return;
 			}
-			if(slot.className == "btn-warning" && slot.textContent == "Empty" && slot.id == spellSchool)
+			if(slot.className.includes("btn-warning") && slot.textContent == "Empty" && slot.id == spellSchool)
 			{
 				slot.textContent = spellName;
 				return;
@@ -71,17 +71,40 @@ function spellList()
 		else
 			continue;
 		
-		var addedSpell = $("<button></button>")
-		.attr("class","btn-primary")
-		.attr("id",masterSpellList[num].fields.name)
-		.text(this.masterSpellList[num].fields.name);
-		//onclick parameters: Spell name, Level of Spell, School of spell
-		addedSpell.click({param1:masterSpellList[num].fields.name, param2:levelOfSpell[1], param3:masterSpellList[num].fields.school},updateText);
-	
+		var addedButtonGrp = $("<div></div>")
+		.attr("class","btn-group");
+
+		var addedBaseSpell =  $("<button></button>")
+				.attr("class","btn btn-sm btn-primary")
+				.attr("id",masterSpellList[num].fields.name)
+				.text(this.masterSpellList[num].fields.name);
+				//onclick parameters: Spell name, Level of Spell, School of spell
+				addedBaseSpell.click({param1:masterSpellList[num].fields.name, param2:levelOfSpell[1], param3:masterSpellList[num].fields.school},updateText);
+
+		addedButtonGrp.append(addedBaseSpell);
+
 		
+		addedButtonGrp.append('<button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span></button>');
+		var unorderList = $("<ul></ul>")
+		.attr("class","dropdown-menu");
+
+		for(var feat of mage.metamagic)
+		{
+			var listItem = $("<li></li>");
+			var a = $("<a></a>")
+			.text(feat.name)
+			.click({param1:feat.nameAdj+masterSpellList[num].fields.name,param2:feat.levelAdj+parseInt(levelOfSpell[1]),param3:masterSpellList[num].fields.school},updateText);
+			
+			listItem.append(a);
+			
+			unorderList.append(listItem);
+		}	
+
+		addedButtonGrp.append(unorderList);
 		
+
 		var levelSection = "#bookLevel"+levelOfSpell[1];
-		$(levelSection).append(addedSpell);
+		$(levelSection).append(addedButtonGrp);
 	}	
 }
 
@@ -114,12 +137,12 @@ function populateMind()
 		{
 			
 			var addedButton=$("<button></button>")
-				.attr("class","btn-info")
+				.attr("class","btn btn-sm btn-info")
 				.click(function()
 				{
 					if(($(this).text() != "Empty") && $(this).parent().attr("id") != "spellLevel0")
 					{
-						$(this).removeClass();$(this).addClass("btn-danger");
+						$(this).removeClass();$(this).addClass("btn btn-sm btn-danger");
 					}
 				})
 				.text("Empty");
@@ -129,14 +152,14 @@ function populateMind()
 	    if(mage.specialization != null && spellLevelCounter != 0)
 		{
 			var addedButton=$("<button></button>")
-				.attr("class","btn-warning")
+				.attr("class","btn btn-sm btn-warning")
 				.attr("id",mage.specialization)
 				.text("Empty")
 				.click(function()
 				{
 					if($(this).text() != "Empty")
 					{
-						$(this).removeClass();$(this).addClass("btn-danger");
+						$(this).removeClass();$(this).addClass("btn btn-sm btn-danger");
 					}
 				});
 			$(levelToAddSlotsTo).append(addedButton);
@@ -161,7 +184,7 @@ function populateSpellBook()
 						
 		var newButton = $("<button></button>") 
 						.attr("type","button") 
-						.addClass("btn-success") 
+						.addClass("btn btn-sm btn-success") 
 						.attr("data-toggle","collapse") 
 						.attr("data-target","#bookLevel"+a)
 						.html("Level "+a);

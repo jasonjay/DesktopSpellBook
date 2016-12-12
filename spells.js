@@ -3,7 +3,19 @@ var mage =
 	"specialization": "evocation",
 	"splitSlots": 1,
 	"bond": 1,
-	"mind": [4,6,5,4,4,3]
+	"mind": [4,6,5,4,4,3],
+	"metamagic": [
+		{
+			"name":"Empower Spell",
+			"nameAdj": "Empowered ",
+			"levelAdj": 2
+		},
+		{
+			"name":"Toppling Spell",
+			"nameAdj": "Toppling ", 
+			"levelAdj": 1
+		}
+	] 
 }
 
 var characterSpellList = 	[2, 5, 21, 23, 42, 62 ,80, 87, 88, 117, 
@@ -24830,7 +24842,7 @@ var masterSpellList = [
             "saving_throw": "Fort negates", 
             "name": "Splinter Spell Resistance", 
             "reference": "prd/spells", 
-            "level": "bloodrager 2, magus 2, occultist 2, psychic 2, shaman 2, sorcerer/wizard 2, witch 2", 
+            "level": "bloodrager 2, magus 2, occultist 2, psychic 2, shaman 2, sorcerer/wizard 2", 
             "spell_resistance": "no", 
             "area": "", 
             "casting_time": "1 standard action", 
