@@ -30,7 +30,7 @@ has the primary key under the pk field. Add in the primary key to the characterS
 
 <h3>Updates needed</h3>
 <ol>
-<li>Functionality to remove spells that are accidently assigned</li>
+<li><s>Functionality to remove spells that are accidently assigned</s> *Added 2/8/2017</li>
 <li>Support for flexible slot feat</li>
 <li>Modal window for new character creation</li>
 <li>Items functionality needs to be added, wands, scroll, spontaneous casts for bonded mages</li>
