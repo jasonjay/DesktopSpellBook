@@ -26,18 +26,18 @@ function updateText(event)
 	{
 		var addSpellToLevel = $("#spellLevel"+currentLevel);
 	
-		var buttonArray = addSpellToLevel[0].children;
+		var buttonArray = $(addSpellToLevel[0].children);
 	    
 		for(var slot of buttonArray)
 		{
-			if(slot.className.includes("btn-info") && slot.textContent == "Empty")
+			if(slot.children[0].className.includes("btn-info") && slot.children[0].textContent == "Empty")
 			{	
-				slot.textContent = spellName;
+				slot.children[0].textContent = spellName;
 				return;
 			}
-			if(slot.className.includes("btn-warning") && slot.textContent == "Empty" && slot.id == spellSchool)
+			if(slot.children[0].className.includes("btn-warning") && slot.children[0].textContent == "Empty" && slot.children[0].id == spellSchool)
 			{
-				slot.textContent = spellName;
+				slot.children[0].textContent = spellName;
 				return;
 				
 			}
@@ -125,7 +125,7 @@ function castSpell(spell)
 {
 	
 }
-
+/*
 function populateMind()
 {
 	var spellLevelCounter = 0;
@@ -167,7 +167,74 @@ function populateMind()
 		spellLevelCounter++;
 	}	
 }
+*/
+function populateMind()
+{
+	var spellLevelCounter = 0;
 
+	for(var num of mage.mind)
+	{	
+		var levelToAddSlotsTo = "#spellLevel"+spellLevelCounter;
+		for(var a = 0; a < num; a++)
+		{
+			var buttonGroup = $("<div></div>")
+							.attr("class","btn-group");
+							
+			var addedButton=$("<button></button>")
+				.attr("class","btn btn-sm btn-info")
+				.click(function()
+				{
+					if(($(this).text() != "Empty") && $(this).parent().attr("id") != "spellLevel0")
+					{
+						$(this).removeClass();$(this).addClass("btn btn-sm btn-danger");
+					}
+				})
+				.text("Empty");
+			
+			$(buttonGroup).append(addedButton);
+			var xButton = $('<button class="btn btn-sm btn-info" type="button"><span class="glyphicon glyphicon-remove"></span></button>')
+						.click(function()
+						{$(this).siblings().text("Empty"); 
+						 $(this).siblings().attr("class","btn btn-sm btn-info");
+						});
+				
+			$(buttonGroup).append(xButton);
+			
+			$(levelToAddSlotsTo).append(buttonGroup);
+			
+		}
+	    if(mage.specialization != null && spellLevelCounter != 0)
+		{
+			var buttonGroup = $("<div></div>")
+							.attr("class","btn-group");
+							
+			var addedButton=$("<button></button>")
+				.attr("class","btn btn-sm btn-warning")
+				.attr("id",mage.specialization)
+				.text("Empty")
+				.click(function()
+				{
+					if($(this).text() != "Empty")
+					{
+						$(this).removeClass();$(this).addClass("btn btn-sm btn-danger");
+					}
+				});
+				
+			var xButton = $('<button class="btn btn-sm btn-warning" type="button"><span class="glyphicon glyphicon-remove"></span></button>')
+			.click(function()
+			{$(this).siblings().text("Empty"); 
+			 $(this).siblings().attr("class","btn btn-sm btn-warning");
+			});
+			
+			$(buttonGroup).append(addedButton)
+						  .append(xButton);
+				
+			
+			$(levelToAddSlotsTo).append(buttonGroup);
+		}
+		spellLevelCounter++;
+	}	
+}
 function populateSpellBook()
 {
 	var pane1Div = $("#pane1");
