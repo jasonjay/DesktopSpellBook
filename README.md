@@ -13,7 +13,10 @@ If you have a specialization you will have an orange spell slot on any spell lev
 
 To cast a spell click on the spell from the prepared spells section on the right side of the screen. The button will turn red, indicating the spell has been cast. 
 
-To refresh your spells for the next day, refresh the browser. 
+To remove a prepared spell, click the 'X' next to the spell. This will return the slot to an empty state and a new spell can be 
+placed in that slot.
+
+To remove all your spells, refresh the browser. 
 
 <h3>How to customize this page for your wizard</h3>
 
